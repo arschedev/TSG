@@ -1,0 +1,10 @@
+textarea {
+	width: 100%;
+	min-height: 100px;
+	resize: vertical;
+	box-sizing: border-box;
+}
+
+textarea.interacted:invalid {
+	border: 1px solid var(--invalid-color);
+}

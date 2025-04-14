@@ -1,0 +1,35 @@
+:root {
+	font-family: system-ui, sans-serif;
+	line-height: 1.5;
+	font-weight: 400;
+
+	color-scheme: light dark;
+	color: rgba(255, 255, 255, 0.8);
+	background-color: #242424;
+
+	font-synthesis: none;
+	text-rendering: optimizeLegibility;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+
+	--invalid-color: #ff6685;
+}
+
+body {
+	margin: 0;
+}
+
+input,
+textarea {
+	background-color: #1e1e1e;
+	border: 1px solid rgba(255, 255, 255, 0.4);
+	border-radius: 4px;
+	font-size: 1rem;
+	padding: 3px 6px;
+}
+
+input:focus,
+textarea:focus {
+	outline: none;
+	border-color: #646cff !important;
+}
