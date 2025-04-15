@@ -9,3 +9,31 @@ services:
     volumes:
       - ./frontend:/app
       - /app/node_modules
+  db:
+    image: mcr.microsoft.com/mssql/server:2022-latest
+    container_name: sqlserver
+    ports:
+      - "1433:1433"
+    environment:
+      - ACCEPT_EULA=Y
+      - MSSQL_SA_PASSWORD=Mssql_sa_password
+  migrate:
+    image: mcr.microsoft.com/dotnet/sdk:6.0
+    volumes:
+      - ./backend:/app
+    working_dir: /app
+    depends_on:
+      - db
+    command: >
+      sh -c "dotnet tool install --global dotnet-ef --version 6.0.36 &&
+      export PATH=$PATH:/root/.dotnet/tools &&
+      dotnet ef database update"
+  backend:
+    image: backend
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    ports:
+      - "5000:5000"
+    depends_on:
+      - migrate

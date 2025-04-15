@@ -6,7 +6,7 @@ export default defineConfig({
 	plugins: [react()],
 	server: {
 		proxy: {
-			"/api": "http://localhost:5033" // ASP.NET backend
+			"/api": "http://backend:5000" // ASP.NET backend
 		}
 	}
 })
