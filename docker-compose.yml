@@ -17,6 +17,8 @@ services:
     environment:
       - ACCEPT_EULA=Y
       - MSSQL_SA_PASSWORD=Mssql_sa_password
+    volumes:
+      - mssql-data:/var/opt/mssql
   migrate:
     image: mcr.microsoft.com/dotnet/sdk:6.0
     volumes:
@@ -37,3 +39,6 @@ services:
       - "5000:5000"
     depends_on:
       - migrate
+
+volumes:
+  mssql-data:
